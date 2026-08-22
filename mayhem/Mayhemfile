@@ -1,0 +1,10 @@
+project: savantenvs/pike
+target: pike
+cmds:
+  - cmd: /mayhem/mayhem/fuzz-prefix/pike/current/bin/pike @@
+    # pike and its dynamic modules are built with afl-clang-fast (CLASSIC, 64 KB map) plus
+    # ASan+UBSan, so Mayhem reads compiled-in AFL edge coverage (see mayhem/build.sh).
+    afl: true
+    env:
+      DISABLE_SMOKETEST: '1'
+      LD_LIBRARY_PATH: /mayhem/mayhem/fuzz-prefix/lib:/mayhem/mayhem/fuzz-prefix/pike/current/lib
