@@ -1,0 +1,9 @@
+project: savantenvs/pike
+target: pike-buggy-mhh-run-283
+# origin: https://app.mayhem.security/mayhemheroes/pike/pike/283
+cmds:
+  - cmd: /mayhem/mayhem/fuzz-prefix/pike/current/bin/pike @@
+    env:
+      DISABLE_SMOKETEST: '1'
+      LD_LIBRARY_PATH: /mayhem/mayhem/fuzz-prefix/lib:/mayhem/mayhem/fuzz-prefix/pike/current/lib
+      MFUZZ_COMPAT_LEVEL: '1'
